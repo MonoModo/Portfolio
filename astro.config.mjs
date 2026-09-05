@@ -7,5 +7,5 @@ export default defineConfig({
         enabled: false,
     },
     site: 'https://monomodo.github.io',
-    base: '/Portfolio',
+    base: '/Portfolio/',
 });
