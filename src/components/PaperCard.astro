@@ -1,0 +1,24 @@
+---
+// src/components/PaperCard.astro
+interface Props {
+  title: string;
+  pdfUrl: string;
+  publishedIn?: string;
+  abstract?: string;
+  githubUrl?: string;
+}
+
+const { title, pdfUrl, publishedIn, abstract, githubUrl } = Astro.props;
+---
+
+<div class="paper-card">
+  <h2>{title}</h2>
+  
+  {publishedIn && <p><em>Published in: {publishedIn}</em></p>}
+  {abstract && <p><strong>Abstract:</strong> {abstract}</p>}
+
+  <!-- Links -->
+  <a href={pdfUrl} target="_blank">📄 View PDF</a>
+  <a href={pdfUrl} download>💾 Download</a>
+  {githubUrl && <a href={githubUrl} target="_blank">💻 Code (GitHub)</a>}
+</div>

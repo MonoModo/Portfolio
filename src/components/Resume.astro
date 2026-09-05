@@ -1,0 +1,405 @@
+---
+// src/components/Resume.astro
+
+const skills = ["C++", "Python", "C", "JavaScript", "MATLAB", "SQL"];
+
+const interests = [
+  "Nuclear & Plasma Physics",
+  "Computational Physics",
+  "Software Development",
+  "Mathematics & Statistics",
+  "Sustainable Energy Technologies",
+];
+
+const experiences = [
+  {
+    role: "Software Engineer",
+    company: "Thales Hengelo",
+    period: "09/2022 – Present",
+    details:
+      "Full-time from 09/2022 to 09/2024. Continued part-time (1 day/week) alongside Master's studies.",
+    tags: ["Software Engineering", "Systems"],
+  },
+  {
+    role: "Physics Engineer (Graduation Intern)",
+    company: "LioniX International",
+    period: "6-Month Internship",
+    details:
+      "Graduation thesis focused on the automation of optical-chip component characterization. Created and implemented algorithms to characterize an optical beam forming network.",
+    tags: ["Photonics", "Algorithm Design", "Automation"],
+  },
+  {
+    role: "Physics Engineer Intern",
+    company: "Eurofins",
+    period: "6-Month Internship",
+    details: "Applied physics engineering and testing methodologies.",
+    tags: ["Physics Engineering", "Lab Testing"],
+  },
+  {
+    role: "Lab-Test Engineer",
+    company: "Bronkhorst High-Tech B.V.",
+    period: "2-Month Summer Position",
+    details: "High-precision instrumentation and laboratory testing.",
+    tags: ["Precision Instruments", "Testing"],
+  },
+];
+
+const researchProjects = [
+  {
+    title: "Master's Thesis: Lower Hybrid Drift Instability Saturation",
+    subtitle: "Correlation study at Earth's magnetopause",
+    description:
+      "Conducted plasma physics research, statistical analysis, and algorithmic data modeling using Python.",
+    tags: ["Plasma Physics", "LHDI", "Python", "Data Analysis"],
+  },
+  {
+    title: "MPRu at JET Particle Tracking Simulation",
+    subtitle: "Neutron Spectrometry",
+    description:
+      "Simulated particle trajectories and detection metrics using Geant4 and C++.",
+    tags: ["Geant4", "C++", "Neutron Spectrometry", "Simulation"],
+  },
+  {
+    title: "Boron Thin-Film Deposition on Tungsten Plasma Facing Material",
+    subtitle: "Thin film growth and Ion Beam Analysis",
+    description: "Conducted under the supervision of Prof. Daniel Primetzhofer.",
+    tags: ["Materials Science", "Ion Beam Analysis", "Thin Films"],
+  },
+];
+
+const education = [
+  {
+    degree: "M.Sc. Energy Physics",
+    institution: "Focus on Nuclear & Plasma Physics",
+    period: "09/2024 – 09/2026",
+  },
+  {
+    degree: "B.Sc. Engineering Physics",
+    institution: "Saxion Enschede, Netherlands",
+    period: "4-Year Program",
+    note: "Minor in Nanotechnology",
+  },
+  {
+    degree: "Double Profile HAVO",
+    institution: "Staring College, Lochem, Netherlands",
+    period: "Completed",
+  },
+];
+---
+
+<div class="resume-wrapper">
+  <!-- Header / Headline -->
+  <header class="resume-header">
+    <div>
+      <h1 class="name">Simon Tenhagen</h1>
+      <p class="subtitle">Engineering Physics • Software Engineer • M.Sc. Physics</p>
+    </div>
+  </header>
+
+  <!-- Programming Languages -->
+  <section class="section">
+    <h2 class="section-title">Programming Languages</h2>
+    <p class="section-hint">Ordered by proficiency</p>
+    <div class="skills-grid">
+      {skills.map((skill, index) => (
+        <div class="skill-chip">
+          <span class="skill-rank">#{index + 1}</span>
+          <span class="skill-name">{skill}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="section">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+      {experiences.map((exp) => (
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="item-header">
+              <h3 class="item-role">{exp.role}</h3>
+              <span class="period-badge">{exp.period}</span>
+            </div>
+            <p class="company-name">{exp.company}</p>
+            <p class="item-desc">{exp.details}</p>
+            <div class="tags-container">
+              {exp.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+      {education.map((edu) => (
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="item-header">
+              <h3 class="item-role">{edu.degree}</h3>
+              <span class="period-badge">{edu.period}</span>
+            </div>
+            <p class="company-name">{edu.institution}</p>
+            {edu.note && <p class="item-desc">{edu.note}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Research Projects -->
+  <section class="section">
+    <h2 class="section-title">Research & Thesis Projects</h2>
+    <div class="cards-grid">
+      {researchProjects.map((proj) => (
+        <div class="project-card">
+          <h3 class="project-title">{proj.title}</h3>
+          <p class="project-sub">{proj.subtitle}</p>
+          <p class="item-desc">{proj.description}</p>
+          <div class="tags-container">
+            {proj.tags.map((tag) => (
+              <span class="tag tag-accent">{tag}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Interests -->
+  <section class="section">
+    <h2 class="section-title">Fields of Interest</h2>
+    <div class="interests-grid">
+      {interests.map((interest) => (
+        <span class="interest-pill">{interest}</span>
+      ))}
+    </div>
+  </section>
+</div>
+
+<style>
+  .resume-wrapper {
+    color: #e2e8f0;
+  }
+
+  /* Header */
+  .resume-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .name {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.4rem 0;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: #38bdf8;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* Section Styling */
+  .section {
+    margin-top: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-hint {
+    font-size: 0.825rem;
+    color: #64748b;
+    margin: 0 0 1rem 0;
+  }
+
+  /* Skills Grid */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .skill-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.4rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .skill-rank {
+    font-size: 0.75rem;
+    color: #38bdf8;
+    font-weight: 700;
+    font-family: monospace;
+  }
+
+  .skill-name {
+    color: #f1f5f9;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    border-left: 2px solid rgba(255, 255, 255, 0.08);
+    margin-left: 0.5rem;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .timeline-item {
+    position: relative;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: calc(-1.5rem - 5px);
+    top: 0.35rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .item-role {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .company-name {
+    color: #38bdf8;
+    font-size: 0.925rem;
+    font-weight: 500;
+    margin: 0.2rem 0 0.5rem 0;
+  }
+
+  .period-badge {
+    font-size: 0.75rem;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 0.15rem 0.6rem;
+    border-radius: 9999px;
+    font-weight: 500;
+  }
+
+  .item-desc {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0 0 0.6rem 0;
+  }
+
+  /* Tags */
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .tag-accent {
+    background: rgba(14, 165, 233, 0.08);
+    border-color: rgba(56, 189, 248, 0.2);
+    color: #7dd3fc;
+  }
+
+  /* Project Cards Grid */
+  .cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .project-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .project-card:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .project-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .project-sub {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin: 0.2rem 0 0.5rem 0;
+    font-style: italic;
+  }
+
+  /* Interests */
+  .interests-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .interest-pill {
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    color: #bae6fd;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 9999px;
+  }
+</style>

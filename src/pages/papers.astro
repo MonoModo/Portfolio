@@ -1,0 +1,32 @@
+---
+// src/pages/papers.astro
+import Layout from '../layouts/Layout.astro';
+import PaperCard from '../components/PaperCard.astro';
+
+const papers = [
+  {
+    title: "Placeholder Paper Title 1",
+    pdfUrl: "/papers/placeholder_paper_1.pdf",
+    publishedIn: "ACM SIGGRAPH 2024",
+    abstract: "We present a novel spatial hashing technique...",
+    githubUrl: "https://github.com/yourname/fluid-sim"
+  },
+  {
+    title: "Placeholder Paper Title 2",
+    pdfUrl: "/papers/placeholder_paper_2.pdf",
+    publishedIn: "IEEE Transactions on Visualization and Computer Graphics 2025",
+    abstract: "A comprehensive study on the application of machine learning in computer graphics...",
+    githubUrl: "https://github.com/yourname/ml-cg"
+  }
+];
+---
+
+<Layout>
+  <h1>Research Papers</h1>
+
+  <div class="papers-list">
+    {papers.map((paper) => (
+      <PaperCard {...paper} />
+    ))}
+  </div>
+</Layout>

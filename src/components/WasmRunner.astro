@@ -1,0 +1,15 @@
+---
+// This top section is like your C++ function signature / inputs
+const { title, wasmFile, description } = Astro.props;
+---
+
+<!-- This bottom section is plain HTML that gets rendered -->
+<div class="project-card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+  
+  <!-- Canvas where your C++ OpenGL code will draw -->
+  <canvas id={wasmFile} width="640" height="480"></canvas>
+  
+  <button onclick={`launchWasm("${wasmFile}")`}>Run Demo</button>
+</div>
