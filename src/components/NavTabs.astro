@@ -5,14 +5,13 @@ const base = import.meta.env.BASE_URL; // Returns "/Portfolio/" in production
 
 // Define your pages/tabs here
 const tabs = [
-//   { name: "Home", href: "${base}" },
-  { name: "Resume", href: `${base}/resume` },
-  { name: "Papers", href: `${base}/papers` },
-  { name: "Computational projects", href: `${base}/cppProjects` },
-  { name: "Shaders", href: `${base}/shaders` },
+  { name: "Resume", path: "resume" },
+  { name: "Papers", path: "papers" },
+  { name: "C++ Projects", path: "cppProjects" },
+  { name: "Shader Viewer", path: "shaders" },
 ];
 ---
-
+<!-- 
 <nav class="tabs-container">
   {tabs.map((tab) => {
     // Check if the current page matches this tab's link
@@ -26,6 +25,22 @@ const tabs = [
         href={tab.href}
         class:list={["tab", { active: isActive }]}
       >
+        {tab.name}
+      </a>
+    );
+  })}
+</nav> -->
+
+<nav class="tabs-container">
+  {tabs.map((tab) => {
+    // Ensures URLs are always "/Portfolio/resume", "/Portfolio/papers", etc.
+    const href = `${base}${tab.path}`;
+    const isActive = tab.path === "" 
+      ? (currentPath === base || currentPath === `${base}/`)
+      : currentPath.includes(tab.path);
+
+    return (
+      <a href={href} class:list={["tab", { active: isActive }]}>
         {tab.name}
       </a>
     );
