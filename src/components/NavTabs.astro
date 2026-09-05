@@ -1,14 +1,15 @@
 ---
 // src/components/NavTabs.astro
 const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL; // Returns "/Portfolio/" in production
 
 // Define your pages/tabs here
 const tabs = [
-//   { name: "Home", href: "/" },
-  { name: "Resume", href: "/resume" },
-  { name: "Papers", href: "/papers" },
-  { name: "Computational projects", href: "/cppProjects" },
-  { name: "Shaders", href: "/shaders" },
+//   { name: "Home", href: "${base}" },
+  { name: "Resume", href: "${base}resume" },
+  { name: "Papers", href: "${base}papers" },
+  { name: "Computational projects", href: "${base}cppProjects" },
+  { name: "Shaders", href: "${base}shaders" },
 ];
 ---
 
