@@ -50,6 +50,7 @@ const researchProjects = [
     subtitle: "Correlation study at Earth's magnetopause",
     description:
       "Conducted plasma physics research, statistical analysis, and algorithmic data modeling using Python.",
+    supervisor: "Prof. Daniel Graham",
     tags: ["Plasma Physics", "LHDI", "Python", "Data Analysis"],
   },
   {
@@ -57,12 +58,14 @@ const researchProjects = [
     subtitle: "Neutron Spectrometry",
     description:
       "Simulated particle trajectories and detection metrics using Geant4 and C++.",
+    supervisor: "Prof. Jacob Eriksson",
     tags: ["Geant4", "C++", "Neutron Spectrometry", "Simulation"],
   },
   {
     title: "Boron Thin-Film Deposition on Tungsten Plasma Facing Material",
     subtitle: "Thin film growth and Ion Beam Analysis",
-    description: "Conducted under the supervision of Prof. Daniel Primetzhofer.",
+    description: "Investigated boron thin-film deposition on tungsten substrates in a hydrogen environment using ion beam analysis techniques, including RBS and Time of Flight ERDA.",
+    supervisor: "Prof. Daniel Primetzhofer", 
     tags: ["Materials Science", "Ion Beam Analysis", "Thin Films"],
   },
 ];
@@ -160,17 +163,25 @@ const education = [
     <h2 class="section-title">Research & Thesis Projects</h2>
     <div class="cards-grid">
       {researchProjects.map((proj) => (
-        <div class="project-card">
-          <h3 class="project-title">{proj.title}</h3>
-          <p class="project-sub">{proj.subtitle}</p>
-          <p class="item-desc">{proj.description}</p>
-          <div class="tags-container">
-            {proj.tags.map((tag) => (
-              <span class="tag tag-accent">{tag}</span>
-            ))}
-          </div>
+      <div class="project-card">
+        <h3 class="project-title">{proj.title}</h3>
+        <p class="project-sub">{proj.subtitle}</p>
+
+        <!-- ADD THIS BLOCK HERE -->
+        {proj.supervisor && (
+          <p class="supervisor">
+            {proj.supervisor}
+          </p>
+        )}
+
+        <p class="item-desc">{proj.description}</p>
+        <div class="tags-container">
+          {proj.tags.map((tag) => (
+            <span class="tag tag-accent">{tag}</span>
+          ))}
         </div>
-      ))}
+      </div>
+    ))}
     </div>
   </section>
 
@@ -185,7 +196,26 @@ const education = [
   </section>
 </div>
 
+
+
 <style>
+  .supervisor {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    margin: 0.35rem 0 0.6rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .supervisor-label {
+    color: #38bdf8; /* Matches your cyan theme accent */
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
   .resume-wrapper {
     color: #e2e8f0;
   }
